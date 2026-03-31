@@ -16,7 +16,9 @@
   </style>
 </head>
 <body>
-
+<nav class="mt-2">
+    <ul><li><a href="/admin/dashboard" class="btn btn-primary btn-sm">got to Admin Dashboard</a></li></ul>
+</nav>
 <div class="container mt-4">
   <h2 class="mb-4">Our Products</h2>
   <div class="row">
@@ -31,7 +33,7 @@
             <p class="card-text"><%= prod.description.substring(0, 50) %>...</p>
             <p class="text-muted"><%= prod.category ? prod.category.name : 'N/A' %></p>
             <!-- Admin dashboard button -->
-            <a href="/admin/dashboard" class="btn btn-primary btn-sm">Admin Dashboard</a>
+            
           </div>
         </div>
       </div>
