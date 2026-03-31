@@ -3,6 +3,20 @@ const CategoryModel = require("../model/Category.model");
 const validation = require("../utils/product.validation");
 
 class ProductController {
+  //home page
+  async homePage(req, res) {
+    try {
+      const products = await ProductModel.find({ isDeleted: false })
+        .populate("category")
+        .sort({ createdAt: -1 });
+
+      res.render("home", { products });
+    } catch (err) {
+      console.log(err);
+      res.send("Error loading products");
+    }
+  }
+  //manage product
   async manageproduct(req, res) {
     const categories = await CategoryModel.find({ isDeleted: false }).sort({
       createdAt: -1,
@@ -10,7 +24,7 @@ class ProductController {
     const products = await ProductModel.find({ isDeleted: false })
       .populate("category")
       .sort({ createdAt: -1 });
-    res.render("admin/productmanage/manage",{ products, categories });
+    res.render("admin/productmanage/manage", { products, categories });
   }
   //  Create Product
   async productpage(req, res) {
